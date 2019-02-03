@@ -43,7 +43,6 @@ while True:
         pred = predict()
         prediction_string = str(pred)
         fps = 0
-        #cv2.putText(frame,str(prediction),(175,400), font, 4,(255,255,255),2,cv2.LINE_AA)  # This prints the predicted class in the window, currently giving errors
 
     fps += 1
 
