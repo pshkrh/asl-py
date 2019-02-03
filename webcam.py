@@ -17,7 +17,7 @@ while True:
 
     if fps == 4:
         image = frame[50:300,50:300]
-        cv2.imwrite('testimg.png',image)
+        cv2.imwrite('frame-output.png',image)
         #image_data   = preprocess(image)
         #print(image_data)
         #prediction   = model(image_data)
