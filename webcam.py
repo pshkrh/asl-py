@@ -23,6 +23,9 @@ learn = load_learner(path)
 # Initialize fps to 0
 fps = 0
 
+# Initialize prediction string
+prediction_string = ''
+
 # Predict the image
 def predict():
     img = open_image(imgpath)
@@ -37,12 +40,15 @@ while True:
     if fps == 10:  # This needs to be adjusted, currently too fast for a user to change sign without garbage characters being added in between
         image = frame[50:300,50:300]
         cv2.imwrite('pred-image.jpg',image)
-        prediction = predict()
-        print(prediction)
+        pred = predict()
+        prediction_string = str(pred)
         fps = 0
-        # cv2.putText(frame,prediction,(175,300), font, 4,(255,255,255),2,cv2.LINE_AA)  # This prints the predicted class in the window, currently giving errors
+        #cv2.putText(frame,str(prediction),(175,400), font, 4,(255,255,255),2,cv2.LINE_AA)  # This prints the predicted class in the window, currently giving errors
 
     fps += 1
+
+    # Display the prediction underneath the region of interest
+    cv2.putText(frame,prediction_string,(150,400), font, 4,(255,255,255),2,cv2.LINE_AA)
 
     # Draw the region of interest and name the video capture window
     cv2.rectangle(frame,(50,50),(300,300), (250,0,0), 2)
