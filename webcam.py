@@ -1,45 +1,57 @@
 import numpy as np
 import cv2
+from fastai.vision import *
+
+# Setting CPU as the default device for inference
+defaults.device = torch.device('cpu')
+
+# Change these paths to fit your system
+path = '/home/pk/asl-classification/'
+imgpath = '/home/pk/asl-classification/pred-image.jpg'
 
 #Set the WebCam
 cap = cv2.VideoCapture(0)
 cap.set(3,640)
 cap.set(4,480)
 
+# Set Font
+font = cv2.FONT_HERSHEY_SIMPLEX
+
+# Set Learner Object
+learn = load_learner(path)
+
+# Initialize fps to 0
 fps = 0
-show_score = 0
-show_res = 'Nothing'
-sequence = 0
 
+# Predict the image
+def predict():
+    img = open_image(imgpath)
+    pred_class, pred_idx, outputs = learn.predict(img)
+    return pred_class
+
+# Run till exit key not pressed - this will capture a video from the webcam
 while True:
-    ret, frame = cap.read() #Capture each frame
+    #Capture each frame
+    ret, frame = cap.read()
 
-
-    if fps == 4:
+    if fps == 10:  # This needs to be adjusted, currently too fast for a user to change sign without garbage characters being added in between
         image = frame[50:300,50:300]
-        cv2.imwrite('frame-output.png',image)
-        #image_data   = preprocess(image)
-        #print(image_data)
-        #prediction   = model(image_data)
-        #result,score = argmax(prediction)
+        cv2.imwrite('pred-image.jpg',image)
+        prediction = predict()
+        print(prediction)
         fps = 0
-        '''
-        if result >= 0.5:
-            show_res  = result
-            show_score= score
-        else:
-            show_res   = "Nothing"
-            show_score = score
-        '''
+        # cv2.putText(frame,prediction,(175,300), font, 4,(255,255,255),2,cv2.LINE_AA)  # This prints the predicted class in the window, currently giving errors
 
     fps += 1
-    #cv2.putText(frame, '%s' %(show_res),(950,250), cv2.FONT_HERSHEY_SIMPLEX, 2, (255,255,255), 3)
-    #cv2.putText(frame, '(score = %.5f)' %(show_score), (950,300), cv2.FONT_HERSHEY_SIMPLEX, 1,(255,255,255),2)
-    cv2.rectangle(frame,(50,50),(300,300), (250,0,0), 2)
-    cv2.imshow("ASL", frame)
 
+    # Draw the region of interest and name the video capture window
+    cv2.rectangle(frame,(50,50),(300,300), (250,0,0), 2)
+    cv2.imshow("ASL Prediction", frame)
+
+    # Exit when q key is pressed
     if cv2.waitKey(1) & 0xFF == ord('q'):
         break
 
+# Release and destroy the window after exiting the loop
 cap.release()
-cv2.destroyWindow("ASL")
+cv2.destroyWindow("ASL Prediction")
