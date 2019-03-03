@@ -23,8 +23,9 @@ learn = load_learner(path)
 # Initialize fps to 0
 fps = 0
 
-# Initialize prediction string
+# Initialize prediction string and title
 prediction = ''
+title = 'ASL Classification'
 
 # Predict the image
 def predict():
@@ -37,7 +38,7 @@ while True:
     #Capture each frame
     ret, frame = cap.read()
 
-    if fps == 24:  # This needs to be adjusted, currently too fast for a user to change sign without garbage characters being added in between
+    if fps == 18:  # This needs to be adjusted, currently too fast for a user to change sign without garbage characters being added in between
         image = frame[50:300,50:300]
         cv2.imwrite('pred-image.jpg',image)
         pred = predict()
@@ -53,6 +54,9 @@ while True:
         fps = 0
 
     fps += 1
+
+    # Display Title
+    cv2.putText(frame,title,(180,30), font, 1,(0,0,0),2,cv2.LINE_AA)
 
     # Display the prediction underneath the region of interest
     cv2.putText(frame,prediction,(50,400), font, 2,(255,255,255),2,cv2.LINE_AA)
