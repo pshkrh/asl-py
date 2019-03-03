@@ -24,10 +24,7 @@ learn = load_learner(path)
 fps = 0
 
 # Initialize prediction string
-prediction_string = ''
-
-# Initialize values for displacement of next character for prediction
-x_disp = 0
+prediction = ''
 
 # Predict the image
 def predict():
@@ -44,14 +41,21 @@ while True:
         image = frame[50:300,50:300]
         cv2.imwrite('pred-image.jpg',image)
         pred = predict()
-        prediction_string = str(pred)
+        temp = str(pred)
+        if temp == "space":
+            prediction += " "
+        elif temp == "del":
+            prediction = prediction[:-1]
+        elif temp == "nothing":
+            prediction += ""
+        else:
+            prediction += temp
         fps = 0
-        x_disp += 20
 
     fps += 1
 
     # Display the prediction underneath the region of interest
-    cv2.putText(frame,prediction_string,(150+x_disp,400), font, 2,(255,255,255),2,cv2.LINE_AA)
+    cv2.putText(frame,prediction,(50,400), font, 2,(255,255,255),2,cv2.LINE_AA)
 
     # Draw the region of interest and name the video capture window
     cv2.rectangle(frame,(50,50),(300,300), (250,0,0), 2)
