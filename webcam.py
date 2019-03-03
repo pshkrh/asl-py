@@ -23,9 +23,10 @@ learn = load_learner(path)
 # Initialize fps to 0
 fps = 0
 
-# Initialize prediction string and title
+# Initialize prediction string, title and help text
 prediction = ''
 title = 'ASL Classification'
+help_text = 'Press Q to quit'
 
 # Predict the image
 def predict():
@@ -60,6 +61,9 @@ while True:
 
     # Display the prediction underneath the region of interest
     cv2.putText(frame,prediction,(50,400), font, 2,(255,255,255),2,cv2.LINE_AA)
+
+    # Display Help text on the bottom
+    cv2.putText(frame,help_text,(180,450), font, 1,(0,255,0),2,cv2.LINE_AA)
 
     # Draw the region of interest and name the video capture window
     cv2.rectangle(frame,(50,50),(300,300), (250,0,0), 2)
