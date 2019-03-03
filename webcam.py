@@ -51,7 +51,7 @@ while True:
     fps += 1
 
     # Display the prediction underneath the region of interest
-    cv2.putText(frame,prediction_string,(150+x_disp,400), font, 4,(255,255,255),2,cv2.LINE_AA)
+    cv2.putText(frame,prediction_string,(150+x_disp,400), font, 2,(255,255,255),2,cv2.LINE_AA)
 
     # Draw the region of interest and name the video capture window
     cv2.rectangle(frame,(50,50),(300,300), (250,0,0), 2)
