@@ -37,7 +37,7 @@ while True:
     #Capture each frame
     ret, frame = cap.read()
 
-    if fps == 10:  # This needs to be adjusted, currently too fast for a user to change sign without garbage characters being added in between
+    if fps == 24:  # This needs to be adjusted, currently too fast for a user to change sign without garbage characters being added in between
         image = frame[50:300,50:300]
         cv2.imwrite('pred-image.jpg',image)
         pred = predict()
