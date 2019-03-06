@@ -3,6 +3,12 @@
 This is an American Sign Language Classifier, built using fastai v1 (based on PyTorch), and OpenCV. 
 Trained on the ResNet34 Pre-Trained model.
 
+## Demo
+
+![](https://i.imgur.com/gesI2th.gif)
+
+Full Video can be found here: https://youtu.be/jKA2dMz0bP8
+
 ## Dataset
 
 The dataset can be found here:
@@ -41,7 +47,7 @@ Then, to train the model, simply use the following command:
 ```
 python3 train.py
 ```
-Note: GPU is recommended.
+Note: A good GPU is recommended for training. Training can take up to or even more than an hour.
 
 ## Usage
 
