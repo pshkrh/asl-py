@@ -10,6 +10,7 @@ The dataset can be found here:
 ```
 https://www.kaggle.com/grassknoted/asl-alphabet
 ```
+Note: The dataset is large, approximately 1GB.
 
 ## Requirements
 
