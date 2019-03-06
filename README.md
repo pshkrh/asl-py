@@ -29,7 +29,6 @@ sudo apt-get install python-opencv
 
 For the Python Packages:
 
-### Installation using pip
 ```
 pip3 install -r requirements.txt
 ```
