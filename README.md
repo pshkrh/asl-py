@@ -45,6 +45,7 @@ Note: GPU is recommended.
 
 ## Usage
 
+Open up the webcam.py file, and change the path variable to point to the export.pkl file, and change the imgpath variable to point to where you would like the saved frame to be stored.
 Once the model has been trained, or if you are using the provided export.pkl (model) file, use the following command:
 
 ```
