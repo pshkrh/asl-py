@@ -6,8 +6,8 @@ from fastai.vision import *
 defaults.device = torch.device('cpu')
 
 # Change these paths to fit your system
-path = '/home/pk/Projects/asl-classification/'
-imgpath = '/home/pk/Projects/asl-classification/pred-image.jpg'
+path = '/home/pk/Projects/asl-py/'
+imgpath = '/home/pk/Projects/asl-py/pred-image.jpg'
 
 # Set the WebCam
 cap = cv2.VideoCapture(0)
