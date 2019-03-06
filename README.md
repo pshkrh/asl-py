@@ -5,7 +5,7 @@ Trained on the ResNet34 Pre-Trained model.
 
 ## Demo
 
-![ASL Classifier Demo](https://i.imgur.com/gesI2th.gif)
+<img src="demo.gif">
 
 Full Video can be found here: https://youtu.be/jKA2dMz0bP8
 
