@@ -1,7 +1,7 @@
 # ASL Classification
 
 This is an American Sign Language Classifier, built using fastai v1 (based on PyTorch), and OpenCV. 
-Trained on the ResNet34 Pre-Trained model.
+Trained on the ResNet-34 Pre-Trained model.
 
 ## Demo
 
