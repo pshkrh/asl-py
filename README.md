@@ -41,6 +41,8 @@ pip3 install -r requirements.txt
 
 ## Training 
 
+Note: Training is not needed to run the project, cloning / downloading the repository and following the instructions in the Usage section is enough.
+
 Open up the train.py file, and point the path variable to the path of the dataset on your computer.
 Then, to train the model, simply use the following command:
 
