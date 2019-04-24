@@ -35,7 +35,7 @@ def webcam_stream():
     # Initialize prediction string, title and help text
     prediction = ''
     title = 'ASL Classification'
-    help_text = 'Press Q to quit'
+    help_text = 'Press R to Reset Text or Q to quit'
 
     # Run till exit key not pressed - this will capture a video from the webcam
     while True:
@@ -68,15 +68,18 @@ def webcam_stream():
                     2, (255, 255, 255), 2, cv2.LINE_AA)
 
         # Display Help text on the bottom
-        cv2.putText(frame, help_text, (180, 450), font,
+        cv2.putText(frame, help_text, (60, 450), font,
                     1, (0, 255, 0), 2, cv2.LINE_AA)
 
         # Draw the region of interest and name the video capture window
         cv2.rectangle(frame, (50, 50), (300, 300), (250, 0, 0), 2)
         cv2.imshow("ASL Prediction", frame)
 
-        # Exit when q key is pressed
-        if cv2.waitKey(1) & 0xFF == ord('q'):
+        # Reset text when r is pressed, exit when q is pressed
+        key = cv2.waitKey(1)
+        if key == ord('r'):
+            prediction = ""
+        elif key == ord('q'):
             break
 
 
